@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: SpringBootInsert
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Admin
+Implementation-Vendor-Id: com.mankraft
+Build-Jdk: 1.8.0_45
+Implementation-URL: http://projects.spring.io/spring-boot/TracratRestf
+ ul/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
