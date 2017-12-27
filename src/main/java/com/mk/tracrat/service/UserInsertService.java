@@ -12,6 +12,10 @@ import com.mk.tracrat.dto.UserOrganization;
 import com.mk.tracrat.dto.UserPermission;
 import com.mk.tracrat.dto.UserRole;
 
+/**
+ * @author Srinath
+ *
+ */
 @Service
 public class UserInsertService {
 	@Autowired
@@ -120,6 +124,43 @@ public class UserInsertService {
 			return "updation failed";
 		else
 			return "updation is success";
+	}
+
+	public String updateAddress(UserAddress userAddress) {
+		int count = dao.updateAddress(userAddress);
+		if (count == 0)
+			return "updation failed";
+		else
+			return "updation is success";
+		
+	}
+
+	public String updatePermission(UserPermission userPermission) {
+		int count = dao.updatePermission(userPermission);
+		if (count == 0)
+			return "updation failed";
+		else
+			return "updation is success";
+		
+	}
+
+	public String updateRole(UserRole userRole) {
+		int count = dao.updateRole(userRole);
+		if (count == 0)
+			return "updation failed";
+		else
+			return "updation is success";
+		
+	}
+
+	public String updateUser(User user) {
+		int count = dao.updateRole(user);
+		if (count == 0)
+			return "updation failed";
+		else
+			return "updation is success";
+		
+		
 	}
 
 }

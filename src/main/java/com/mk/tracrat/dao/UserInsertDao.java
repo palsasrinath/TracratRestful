@@ -8,6 +8,10 @@ import com.mk.tracrat.dto.UserOrganization;
 import com.mk.tracrat.dto.UserPermission;
 import com.mk.tracrat.dto.UserRole;
 
+/**
+ * @author Srinath
+ *
+ */
 public interface UserInsertDao {
 
 	public int userOrganization(UserOrganization uo);
@@ -43,5 +47,13 @@ public interface UserInsertDao {
 	public List<UserOrganization> getOrganizationById(Integer org_id);
 
 	public int updateOrganization(UserOrganization userOrganization);
+
+	public int updateAddress(UserAddress userAddress);
+
+	public int updatePermission(UserPermission userPermission);
+
+	public int updateRole(UserRole userRole);
+
+	public int updateRole(User user);
 
 }

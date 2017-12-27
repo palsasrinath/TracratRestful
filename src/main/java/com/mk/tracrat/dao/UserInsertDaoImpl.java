@@ -13,6 +13,10 @@ import com.mk.tracrat.dto.UserOrganization;
 import com.mk.tracrat.dto.UserPermission;
 import com.mk.tracrat.dto.UserRole;
 
+/**
+ * @author Srinath
+ *
+ */
 @Repository
 public class UserInsertDaoImpl implements UserInsertDao {
 	@Autowired
@@ -24,6 +28,10 @@ public class UserInsertDaoImpl implements UserInsertDao {
 	private static final String INSERT_USER_ORGANIZATION = "call procedure_insert_Organization(?,?,?,?,?,?)";
 
 	private static final String UPDATE_ORGANIZATION_DATA = "call procd_organization_update(?,?,?,?,?,?)";
+	private static final String UPDATE_ADDRESS_DATA = "call procd_address_update(?,?,?,?,?,?,?)";
+	private static final String UPDATE_PERMISSION_DATA = "call procd_permission_update(?,?,?,?,?,?,?)";
+	private static final String UPDATE_USER_ROLE_DATA = "call procd_role_update(?,?,?,?,?,?,?)";
+	private static final String UPDATE_USER_DATA = "call procd_user_update(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 	public int userOrganization(UserOrganization userOrganization) {
 		int response = jt.update(INSERT_USER_ORGANIZATION, userOrganization.getOrg_id(), userOrganization.getStatus(),
@@ -163,6 +171,37 @@ public class UserInsertDaoImpl implements UserInsertDao {
 		int count = jt.update(UPDATE_ORGANIZATION_DATA, userOrganization.getStatus(),
 				userOrganization.getCreated_date(), userOrganization.getCreated_by(),
 				userOrganization.getModified_date(), userOrganization.getModified_by(), userOrganization.getOrg_id());
+
+		return count;
+	}
+
+	public int updateAddress(UserAddress userAddress) {
+		System.out.println("dao update controller" + userAddress);
+		int count = jt.update(UPDATE_ADDRESS_DATA,userAddress.getUser_id(), userAddress.getAddress1(), userAddress.getAddress2(),
+				userAddress.getState(), userAddress.getCountry(), userAddress.getPin(),userAddress.getAddress_id() );
+
+		return count;
+	}
+
+	public int updatePermission(UserPermission userPermission) {
+		System.out.println("dao update controller" + userPermission);
+		int count = jt.update(UPDATE_PERMISSION_DATA, userPermission.getRole_id(), userPermission.getStatus(), userPermission.getCreated_date(),
+				userPermission.getCreated_by(), userPermission.getModified_date(), userPermission.getModified_by(), userPermission.getPermission_id());
+
+		return count;
+	}
+
+	public int updateRole(UserRole userRole) {
+		int count = jt.update(UPDATE_USER_ROLE_DATA, userRole.getUser_id(), userRole.getStatus(), userRole.getCreated_date(),
+				userRole.getCreated_by(), userRole.getModified_date(), userRole.getModified_by(), userRole.getRole_id());
+		return count;
+	}
+
+	public int updateRole(User user) {
+		System.out.println("dao update controller" + user);
+		int count = jt.update(UPDATE_USER_DATA, user.getOrg_id(), user.getFirst_name(), user.getLast_name(), user.getAge(),
+				user.getGender(), user.getMobile_number(), user.getSuperUserFlag(), user.getStatus(), user.getCreated_date(),
+				user.getCreated_by(), user.getModified_date(), user.getModified_by(), user.getUser_id());
 
 		return count;
 	}

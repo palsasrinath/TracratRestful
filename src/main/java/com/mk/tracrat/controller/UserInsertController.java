@@ -32,8 +32,7 @@ public class UserInsertController {
 	final static Logger logger = Logger.getLogger(UserInsertController.class);
 	@Autowired
 	private UserInsertService service;
- 
-	
+
 	// insert User details
 	@PostMapping("/createUser")
 	public ResponseEntity<User> addUser(@RequestBody User user) {
@@ -41,7 +40,7 @@ public class UserInsertController {
 		logger.debug("Added:: " + user);
 		return new ResponseEntity<User>(user, HttpStatus.CREATED);
 	}
- 
+
 	// insert Organization details
 	@PostMapping("/createOrg")
 	public ResponseEntity<UserOrganization> addEmployee(@RequestBody UserOrganization userOrganization) {
@@ -74,7 +73,6 @@ public class UserInsertController {
 		return new ResponseEntity<UserRole>(userRole, HttpStatus.CREATED);
 	}
 
-	
 	// get User details
 	@GetMapping("/getUsers")
 	public ResponseEntity<List<User>> getUserDetails() {
@@ -100,7 +98,6 @@ public class UserInsertController {
 		logger.debug(Arrays.toString(organizations.toArray()));
 		return new ResponseEntity<List<UserOrganization>>(organizations, HttpStatus.OK);
 	}
-	
 
 	// get Permission details
 	@GetMapping("/getPermissions")
@@ -114,7 +111,7 @@ public class UserInsertController {
 		logger.debug(Arrays.toString(permissions.toArray()));
 		return new ResponseEntity<List<UserPermission>>(permissions, HttpStatus.OK);
 	}
-	
+
 	// get Role details
 	@GetMapping("/getRoles")
 	public ResponseEntity<List<UserRole>> getRoles() {
@@ -127,7 +124,6 @@ public class UserInsertController {
 		logger.debug(Arrays.toString(userRoles.toArray()));
 		return new ResponseEntity<List<UserRole>>(userRoles, HttpStatus.OK);
 	}
-	
 
 	// get Address details
 	@GetMapping("/getAddresses")
@@ -167,7 +163,6 @@ public class UserInsertController {
 		logger.debug(Arrays.toString(users.toArray()));
 		return new ResponseEntity<List<User>>(users, HttpStatus.OK);
 	}
-	
 
 	// get Roles by id
 	@GetMapping("/getRoleById/{role_id}")
@@ -208,13 +203,44 @@ public class UserInsertController {
 		logger.debug(Arrays.toString(organizations.toArray()));
 		return new ResponseEntity<List<UserOrganization>>(organizations, HttpStatus.OK);
 	}
-	
-	// update Organization 
+
+	// update Organization
 	@PostMapping("/updateOrganization")
 	public ResponseEntity<UserOrganization> updateOrganization(@RequestBody UserOrganization userOrganization) {
 		service.updateOrganization(userOrganization);
 		logger.debug("Added:: " + userOrganization);
 		return new ResponseEntity<UserOrganization>(userOrganization, HttpStatus.CREATED);
 	}
+
+	// update Address
+	@PostMapping("/updateAddress")
+	public ResponseEntity<UserAddress> updateAddress(@RequestBody UserAddress userAddress) {
+		service.updateAddress(userAddress);
+		logger.debug("Added:: " + userAddress);
+		return new ResponseEntity<UserAddress>(userAddress, HttpStatus.CREATED);
+	}
+
+	// update Permission
+	@PostMapping("/updatePermission")
+	public ResponseEntity<UserPermission> updatePermission(@RequestBody UserPermission userPermission) {
+		service.updatePermission(userPermission);
+		logger.debug("Added:: " + userPermission);
+		return new ResponseEntity<UserPermission>(userPermission, HttpStatus.CREATED);
+	}
+
+	// update Role
+	@PostMapping("/updateRole")
+	public ResponseEntity<UserRole> updateRole(@RequestBody UserRole userRole) {
+		service.updateRole(userRole);
+		logger.debug("Added:: " + userRole);
+		return new ResponseEntity<UserRole>(userRole, HttpStatus.CREATED);
+	}
+	// update User 
+			@PostMapping("/updateUser")
+			public ResponseEntity<User> updateUser(@RequestBody User user) {
+				service.updateUser(user);
+				logger.debug("Added:: " + user);
+				return new ResponseEntity<User>(user, HttpStatus.CREATED);
+			}
 
 }
