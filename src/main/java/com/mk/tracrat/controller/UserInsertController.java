@@ -3,6 +3,9 @@ package com.mk.tracrat.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -212,7 +215,24 @@ public class UserInsertController {
 		return new ResponseEntity<UserOrganization>(userOrganization, HttpStatus.CREATED);
 	}
 
+	// update User
+	@PostMapping("/updateUser")
+	public ResponseEntity<User> updateUser(@RequestBody User user) {
+		service.updateUser(user);
+		logger.debug("Added:: " + user);
+		return new ResponseEntity<User>(user, HttpStatus.CREATED);
+	}
+
+	// update Role
+	@PostMapping("/updateRole")
+	public ResponseEntity<UserRole> updateRole(@RequestBody UserRole userRole) {
+		service.updateRole(userRole);
+		logger.debug("Added:: " + userRole);
+		return new ResponseEntity<UserRole>(userRole, HttpStatus.CREATED);
+	}
+
 	// update Address
+
 	@PostMapping("/updateAddress")
 	public ResponseEntity<UserAddress> updateAddress(@RequestBody UserAddress userAddress) {
 		service.updateAddress(userAddress);
@@ -227,20 +247,5 @@ public class UserInsertController {
 		logger.debug("Added:: " + userPermission);
 		return new ResponseEntity<UserPermission>(userPermission, HttpStatus.CREATED);
 	}
-
-	// update Role
-	@PostMapping("/updateRole")
-	public ResponseEntity<UserRole> updateRole(@RequestBody UserRole userRole) {
-		service.updateRole(userRole);
-		logger.debug("Added:: " + userRole);
-		return new ResponseEntity<UserRole>(userRole, HttpStatus.CREATED);
-	}
-	// update User 
-			@PostMapping("/updateUser")
-			public ResponseEntity<User> updateUser(@RequestBody User user) {
-				service.updateUser(user);
-				logger.debug("Added:: " + user);
-				return new ResponseEntity<User>(user, HttpStatus.CREATED);
-			}
 
 }

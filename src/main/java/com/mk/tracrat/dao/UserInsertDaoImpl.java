@@ -40,8 +40,11 @@ public class UserInsertDaoImpl implements UserInsertDao {
 	
 
 	// inserting user details into mssql server
-	private static final String INSERT_USER_ORGANIZATION = "INSERT INTO t_organization_create values(?,?,?,?,?)";
-	private static final String INSERT_USER_DATA = "INSERT INTO t_user_create VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String INSERT_USER_ORGANIZATION = "call procedure_insert_Organization(?,?,?,?,?)";
+	private static final String INSERT_USER_DATA = "call procedure_insert_user(?,?,?,?,?,?,?,?,?,?,?,?)";
+	
+	//private static final String INSERT_USER_ORGANIZATION = "INSERT INTO t_organization_create values(?,?,?,?,?)";
+	//private static final String INSERT_USER_DATA = "INSERT INTO t_user_create VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String INSERT_USER_ADDRESS = "INSERT INTO t_address_create VALUES(?,?,?,?,?,?)";
 	private static final String INSERT_USER_ROLE = "INSERT INTO t_role_create VALUES(?,?,?,?,?,?)";
 	private static final String INSERT_USER_PERMISSION = "INSERT INTO t_permission_create VALUES(?,?,?,?,?,?)";
